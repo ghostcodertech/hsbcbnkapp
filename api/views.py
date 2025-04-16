@@ -170,8 +170,7 @@ def login_with_bank_id_api(request):
             send_ordinary_user_mail(
                 to_email=request.user.email,
                 subject="Login Alert",
-                message="We noticed a login attempt you made. Please know we take security very seriously at \
-                    {BANK_NAME} and we are dedicated to giving you the best banking experience."
+                message=f"We noticed a login attempt you made. Please know we take security very seriously at {BANK_NAME} and we are dedicated to giving you the best banking experience."
             )
 
             # Change the redirect url here if you change the dashboard
