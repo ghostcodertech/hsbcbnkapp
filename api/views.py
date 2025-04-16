@@ -613,7 +613,7 @@ def get_contact_us_data(request):
     try:
         send_contact_mail(
             subject=subject,
-            message=f"You just received a contact message from {first_name + " " + last_name} with email: {email}. Here is the message: \n {message}"
+            message = f"You just received a contact message from {first_name + ' ' + last_name} with email: {email}. Here is the message: \n {message}"
         )
         return Response({"message": "Email was sent successfully. We will respond to you as soon as we possible. You can also chat to our representative using the live chat below.", "success": True}, status=status.HTTP_200_OK)
     except:
