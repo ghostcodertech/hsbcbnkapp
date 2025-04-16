@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
-
+from app.bank_name import BANK_NAME
 from .constants import ACCOUNTS
 
 from django.contrib.auth import update_session_auth_hash
@@ -166,11 +166,12 @@ def login_with_bank_id_api(request):
             #     subject="Login Alert",
             #     message=f"User with email: {request.user.email} just logged into the app."
             # )
+            
             send_ordinary_user_mail(
                 to_email=request.user.email,
                 subject="Login Alert",
                 message="We noticed a login attempt you made. Please know we take security very seriously at \
-                    JPCiti Bank and we are dedicated to giving you the best banking experience."
+                    {BANK_NAME} and we are dedicated to giving you the best banking experience."
             )
 
             # Change the redirect url here if you change the dashboard
@@ -280,7 +281,7 @@ def create_support_request(request):
             to_email=request.user.email,
                 subject="Login Alert",
                 message="We noticed a login attempt you made. Please know we take security very seriously at \
-                    JPCiti Bank and we are dedicated to giving you the best banking experience."
+                    HSBC Bank and we are dedicated to giving you the best banking experience."
         )
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
